@@ -1,7 +1,7 @@
 local function register_door_from_node(node)
 	local def = core.registered_nodes[node]
 	if not def or not def.tiles then return end
-	local tile = type(def.tiles) == "string" and def.tiles or (def.tiles[5] or def.tiles[3] or def.tiles[1])
+	local tile = type(def.tiles) == "string" and def.tiles or (def.tiles[6] or def.tiles[5] or def.tiles[3] or def.tiles[1])
 	local tex = type(tile) == "table" and tile.name or tile
 	local suffix = node:match(":(.+)$") or node
 	local raw_desc = def.description or ""
@@ -33,7 +33,11 @@ table.insert(core.registered_on_mods_loaded, 1, function()
         "default:gravel",
         "default:cobble",
         "default:wood",
-        "you see nothing trust"
+        "etheral:mushroom_trunk",
+		"default:chest",
+		"default:furnace",
+		"tac_nayn:tacnayn",
+		"nyancat:nyancat_rainbow"
 	}
 	for _, node in ipairs(nodes_to_register) do
 		register_door_from_node(node)
